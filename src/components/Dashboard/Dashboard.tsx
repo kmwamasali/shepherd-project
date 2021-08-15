@@ -1,6 +1,10 @@
+import Layout from "../Layout";
+
 function Dashboard(): JSX.Element {
   return(
-    <h2>Dashboard Page</h2>
+    <Layout>
+      <h2>Dashboard Page</h2>
+    </Layout>
   )
 }
 
