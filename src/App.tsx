@@ -1,4 +1,4 @@
-import Routes from './components/routes';
+import Routes from './components/Routes/Routes';
 
 function App(): JSX.Element {
   return (

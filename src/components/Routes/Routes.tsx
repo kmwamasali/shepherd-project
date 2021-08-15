@@ -1,10 +1,9 @@
-import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import SharedNotes from './SharedNotes';
-import NoMatchPage from './NoMatchPage';
+import Dashboard from '../Dashboard/Dashboard';
+import SharedNotes from '../SharedNotes/SharedNotes';
+import NoMatchPage from '../NoMatchPage/NoMatchPage';
 
-function Routes(): JSX.Element {
+function Routes() {
   return(
     <Router>
       <Switch>
