@@ -28,6 +28,7 @@ const StyledPageTitle = styled.h1`
   font-weight: bold;
   font-size: 28px;
   line-height: 34px;
+  color: #272727;
 `;
 
 function Layout(props: LayoutProps) {
