@@ -3,6 +3,6 @@ import Dashboard from './Dashboard';
 
 test('should render the dashboard component', () => {
   render(<Dashboard />);
-  const dashboardElement = screen.getByText(/Dashboard Page/i);
+  const dashboardElement = screen.getByText(/Dashboard/i);
   expect(dashboardElement).toBeInTheDocument();
 });

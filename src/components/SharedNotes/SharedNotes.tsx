@@ -1,6 +1,9 @@
+import Layout from "../Layout";
+
 function SharedNotes(): JSX.Element {
   return(
-    <h2>Shared Notes</h2>
+    <Layout pageTitle="Shared Notes">
+    </Layout>
   )
 }
 

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 type LayoutProps = {
-  children: React.ReactChild
+  pageTitle: string,
+  children: React.ReactNode
 }
+
 const MainContainerWrapper = styled.div`
   background: #eeeeee;
   height: 100vh;
@@ -20,11 +22,22 @@ const MainContentWrapper = styled.div`
   padding: 24px;
 `;
 
+const StyledPageTitle = styled.h1`
+  font: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+`;
+
 function Layout(props: LayoutProps) {
   return(
     <MainContainerWrapper>
       <SidebarContainer />
       <MainContentWrapper>
+        <StyledPageTitle>
+          {props.pageTitle}
+        </StyledPageTitle>
         {props.children}
       </MainContentWrapper>
     </MainContainerWrapper>
