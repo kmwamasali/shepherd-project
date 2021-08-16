@@ -4,7 +4,6 @@ import Layout from './index';
 test('renders the page title with empty children props', () => {
   render(
     <Layout pageTitle="title">
-
     </Layout>
   );
   const layoutTitleElement = screen.getByText(/title/i);

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Sidebar from '../UI/Sidebar/Sidebar';
 
 type LayoutProps = {
   pageTitle: string,
@@ -10,12 +11,6 @@ const MainContainerWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: row;
-`;
-
-const SidebarContainer = styled.div`
-  background: #fff;
-  width: 72px;
-  box-shadow: 0px 4px 4px #D3D3D3;
 `;
 
 const MainContentWrapper = styled.div`
@@ -34,7 +29,7 @@ const StyledPageTitle = styled.h1`
 function Layout(props: LayoutProps) {
   return(
     <MainContainerWrapper>
-      <SidebarContainer />
+      <Sidebar />
       <MainContentWrapper>
         <StyledPageTitle>
           {props.pageTitle}
