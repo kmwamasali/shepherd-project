@@ -3,12 +3,17 @@ import styled from 'styled-components';
 type IconProps = {
   label: string,
   source: string,
+  iconSize?: string,
   inline?: boolean
+}
+
+type StyledIconProps = {
+  iconSize?: string
 }
 
 const StyledIconWrapper = styled.div`
   display: block;
-  height: 52px;
+  height: ${(props: StyledIconProps) => props.iconSize ? props.iconSize : '52px'};
   border-radius: 18px;
   margin: 10px;
   &.inline {
@@ -18,12 +23,15 @@ const StyledIconWrapper = styled.div`
 `;
 
 const StyledIcon = styled.img`
-  width: 100%;
+  height: 100%;
 `;
 
 function Icon(props: IconProps): JSX.Element {
   return(
-    <StyledIconWrapper className={props.inline ? 'inline': ''}>
+    <StyledIconWrapper
+      iconSize={props.iconSize} 
+      className={props.inline ? 'inline': ''}
+    >
       <StyledIcon
         src={props.source} 
         alt={props.label}/>
