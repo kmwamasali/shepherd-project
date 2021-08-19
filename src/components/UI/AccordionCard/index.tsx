@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Icon from '../Icon';
 
@@ -10,6 +11,7 @@ const StyledCard = styled.div`
   box-shadow: 0px 2px 4px #EBEBEB;
   border-radius: 10px;
   margin-right: 20px;
+  height: 100%;
 `;
 
 const StyledCardHeader = styled.div`
@@ -26,8 +28,8 @@ const StyledCardHeading = styled.h3`
 `;
 
 const StyledCardContent = styled.div`
-  min-height: 250px;
-  padding: 15px;
+  min-height: 300px;
+  padding: 25px;
 `;
 
 type CardProps = {
@@ -51,9 +53,11 @@ function AccordionCard({
   cardTitle, 
   children
 }: CardProps): JSX.Element {
+  const [open, handleChange] = useState(true);
+
   return (
     <StyledCard>
-      <StyledCardHeader>
+      <StyledCardHeader onClick={() => handleChange(!open)}>
         <Icon
           iconSize={iconSize}
           source={iconSrc}
@@ -66,9 +70,9 @@ function AccordionCard({
           label={iconLabel2}
         />
       </StyledCardHeader>
-      <StyledCardContent>
+      {open && <StyledCardContent>
         {children}
-      </StyledCardContent>
+      </StyledCardContent>}
     </StyledCard>
   )
 }

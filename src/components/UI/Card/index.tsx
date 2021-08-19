@@ -27,7 +27,7 @@ const StyledCardHeading = styled.h3`
 
 const StyledCardContent = styled.div`
   min-height: 300px;
-  padding: 15px;
+  padding: 25px;
 `;
 
 type CardProps = {

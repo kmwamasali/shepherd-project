@@ -18,13 +18,14 @@ const StyledButton = styled.button`
   }
 `;
 
-type ButtonProps = {
-  label: string
+interface ButtonProps {
+  label: string,
+  onClick?: () => void
 }
 
-function Button({ label }: ButtonProps): JSX.Element {
+const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
   return(
-    <StyledButton>
+    <StyledButton onClick={onClick} >
       <Icon
         iconSize="20px"
         source={plusIcon}
