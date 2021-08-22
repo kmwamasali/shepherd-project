@@ -6,7 +6,9 @@ import question from '../../images/question-mark-icon.png';
 import file from '../../images/empty-file-icon.png';
 import AccordionCard from '../UI/AccordionCard';
 import Button from '../UI/Button';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import TextArea from '../UI/TextArea';
+import firebase from '../../utility/firebase';
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -24,27 +26,34 @@ const StyledCheckbox = styled.input`
   margin-right: 10px;
 `;
 
-const StyledTextArea = styled.textarea`
-  background: #F9F9F9;
-  border: 1px solid #E5E5E5;
-  box-sizing: border-box;
-  border-radius: 10px;
-  width: 100%;
-  min-height: 150px;
-`;
-
 function Dashboard(): JSX.Element {
+  // text area state and functions
+  const [textArea1Value, updateTextArea1Value] = useState('Instructions');
+  const [textArea2Value, updateTextArea2Value] = useState('Instructions');
+
+  const onTextAreaChange = (e: any): void => {
+    updateTextArea1Value(e.currentTarget.value);
+  };
+
+  const onTextArea2Change = (e: any): void => {
+    updateTextArea2Value(e.currentTarget.value);
+  };
+
+  const handleTextAreaSubmit = () => {
+    firebase.database().ref('/text').set(textArea1Value);
+  }
+
+  // checklist state and functions
   const [checklistItems, updateChecklistItems] = useState([
     { label: 'Task 1', value: 1, checked: true },
     { label: 'Task 2', value: 2, checked: false },
     { label: 'Task 3', value: 3, checked: false }
   ]);
-
-  const handleChange = (val: HTMLInputElement): void => {
+  const handleChecklistChange = (val: HTMLInputElement): void => {
     const mappedArr = checklistItems.map(item => {
       return item.label === val.name ? { ...item, checked: !item.checked } : { ...item };
     })
-    updateChecklistItems(mappedArr)
+    updateChecklistItems(mappedArr);
   };
 
   const addNewChecklistItem = () => {
@@ -64,7 +73,7 @@ function Dashboard(): JSX.Element {
         type="checkbox"
         name={item.label}
         checked={item.checked}
-        onChange={(e) => handleChange(e.target)}
+        onChange={(e) => handleChecklistChange(e.target)}
       />
         {item.label}
     </StyledLabel>
@@ -93,8 +102,9 @@ function Dashboard(): JSX.Element {
           iconLabel="agenda"
           cardTitle="Personal Notes"
         >
-          <StyledTextArea value={''} />
+          <TextArea limited={true} text={textArea1Value} onChange={onTextAreaChange} />
           <Button
+            onClick={handleTextAreaSubmit}
             label="Check Hover State" />
         </Card>
         <Card
@@ -103,7 +113,7 @@ function Dashboard(): JSX.Element {
           iconLabel="location"
           cardTitle="Your Location"
         >
-          <StyledTextArea value={''} />
+          <TextArea text={textArea2Value} onChange={onTextArea2Change} />
         </Card>
       </ContentWrapper>
     </Layout>

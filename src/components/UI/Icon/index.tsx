@@ -17,8 +17,10 @@ const StyledIconWrapper = styled.div`
   border-radius: 18px;
   margin: 10px;
   &.inline {
-    background: #EAEAEA;
     padding: 16px;
+  }
+  &:hover {
+    background: #EAEAEA;
   }
 `;
 
