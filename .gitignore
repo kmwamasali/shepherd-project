@@ -10,6 +10,8 @@
 
 # production
 /build
+.firebaserc
+database.rules.json
 
 # misc
 .env
