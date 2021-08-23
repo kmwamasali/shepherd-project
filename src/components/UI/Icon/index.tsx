@@ -4,11 +4,13 @@ type IconProps = {
   label: string,
   source: string,
   iconSize?: string,
-  inline?: boolean
+  inline?: boolean,
+  nav?: boolean
 }
 
 type StyledIconProps = {
-  iconSize?: string
+  iconSize?: string,
+  nav?: boolean 
 }
 
 const StyledIconWrapper = styled.div`
@@ -20,7 +22,7 @@ const StyledIconWrapper = styled.div`
     padding: 16px;
   }
   &:hover {
-    background: #EAEAEA;
+    background: ${(props: StyledIconProps) => props.nav ? '#EAEAEA' : 'transparent'};
   }
 `;
 
@@ -31,6 +33,7 @@ const StyledIcon = styled.img`
 function Icon(props: IconProps): JSX.Element {
   return(
     <StyledIconWrapper
+      nav={props.nav}
       iconSize={props.iconSize} 
       className={props.inline ? 'inline': ''}
     >

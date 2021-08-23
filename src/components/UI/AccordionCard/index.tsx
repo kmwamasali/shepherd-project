@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Icon from '../Icon';
-
+import ArrowUp from '../../../images/arrow-up-icon.png';
+import ArrowDown from '../../../images/arrow-down-icon.png';
 
 const StyledCard = styled.div`
   background: #fff;
@@ -25,6 +26,15 @@ const StyledCardHeading = styled.h3`
   font-style: normal;
   font-weight: bold;
   margin-top: 10px;
+`;
+
+const StyledHeaderLeft = styled.span`
+  display: flex;
+  flex-grow: 4;
+`;
+
+const StyledHeaderRight = styled.span`
+  flex-grow:1
 `;
 
 const StyledCardContent = styled.div`
@@ -58,17 +68,33 @@ function AccordionCard({
   return (
     <StyledCard>
       <StyledCardHeader onClick={() => handleChange(!open)}>
-        <Icon
-          iconSize={iconSize}
-          source={iconSrc}
-          label={iconLabel}
-        />
-        <StyledCardHeading>{cardTitle}</StyledCardHeading>
-        <Icon
-          iconSize={iconSize2}
-          source={iconSrc2}
-          label={iconLabel2}
-        />
+        <StyledHeaderLeft>
+          <Icon
+            iconSize={iconSize}
+            source={iconSrc}
+            label={iconLabel}
+          />
+          <StyledCardHeading>{cardTitle}</StyledCardHeading>
+          <Icon
+            iconSize={iconSize2}
+            source={iconSrc2}
+            label={iconLabel2}
+          />
+        </StyledHeaderLeft>
+        <StyledHeaderRight>
+          {open ?
+            <Icon
+              iconSize="16px"
+              source={ArrowUp}
+              label="Collapse"
+            /> :
+            <Icon
+              iconSize="16px"
+              source={ArrowDown}
+              label="Collapse"
+            />
+          }
+        </StyledHeaderRight>
       </StyledCardHeader>
       {open && <StyledCardContent>
         {children}

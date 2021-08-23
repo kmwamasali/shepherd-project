@@ -37,11 +37,13 @@ function Sidebar(): JSX.Element {
         />
         <StyledHr />
         <Icon
+          nav={true}
           source={squaresIcon}
           label="Dashboard"
           inline={true}
         />
         <Icon
+          nav={true}
           source={clipboard}
           label="Shared Notes"
           inline={true}
