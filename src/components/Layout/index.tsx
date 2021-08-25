@@ -14,6 +14,7 @@ const MainContainerWrapper = styled.div`
 `;
 
 const MainContentWrapper = styled.div`
+  overflow: scroll;
   padding: 24px;
 `;
 

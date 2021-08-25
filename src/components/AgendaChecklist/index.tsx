@@ -5,6 +5,11 @@ import AccordionCard from '../UI/AccordionCard';
 import Button from '../UI/Button';
 import { useState } from 'react';
 
+const StyledContent = styled.div`
+  min-height: 188px;
+  margin-bottom: 7px;
+`;
+
 const StyledLabel = styled.label`
   display: block;
 `;
@@ -63,7 +68,9 @@ function ChecklistCard(): JSX.Element {
       iconLabel2="hover"
       cardTitle="Agenda"
     >
-      {checklistItemsNode}
+      <StyledContent>
+        {checklistItemsNode}
+      </StyledContent>
       <Button
         label="Add Checkbox"
         onClick={addNewChecklistItem} />

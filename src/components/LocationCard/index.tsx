@@ -11,7 +11,6 @@ function LocationCard(): JSX.Element {
     .then(repsonse => repsonse.json())
     .then(data => {
       const info = `country: ${data.countryName} \ncontinent: ${data.continentName}`;
-      console.log(info)
       updateLocation(info)
     });
   }, [])

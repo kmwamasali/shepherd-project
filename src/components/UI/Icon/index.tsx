@@ -22,7 +22,7 @@ const StyledIconWrapper = styled.div`
     padding: 16px;
   }
   .active & {
-    background: '#EAEAEA';
+    background: #EAEAEA;
   }
   &:hover {
     background: ${(props: StyledIconProps) => props.nav ? '#EAEAEA' : 'transparent'};

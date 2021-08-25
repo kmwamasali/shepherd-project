@@ -4,7 +4,7 @@ import userIcon from '../../../images/user-icon.png';
 import clipboard from '../../../images/file-icon.png';
 import squaresIcon from '../../../images/squares-icon.png';
 import Icon from '../Icon';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const SidebarContainer = styled.div`
   display: flex;
@@ -37,24 +37,22 @@ function Sidebar(): JSX.Element {
           label="logo"
         />
         <StyledHr />
-        <Router>
-          <Link to='/'>
-            <Icon
-              nav={true}
-              source={squaresIcon}
-              label="Dashboard"
-              inline={true}
-            />
-          </Link>
-          <Link to='/shared-notes'>
-            <Icon
-              nav={true}
-              source={clipboard}
-              label="Shared Notes"
-              inline={true}
-            />
-          </Link>
-        </Router>
+        <NavLink exact to='/' activeClassName='active'>
+          <Icon
+            nav={true}
+            source={squaresIcon}
+            label="Dashboard"
+            inline={true}
+          />
+        </NavLink>
+        <NavLink to='/shared-notes' activeClassName='active'>
+          <Icon
+            nav={true}
+            source={clipboard}
+            label="Shared Notes"
+            inline={true}
+          />
+        </NavLink>
       </UpperIconsDiv>
       <LowerIconsDiv>
         <StyledHr />

@@ -11,7 +11,7 @@ const StyledTextArea = styled.textarea`
   box-sizing: border-box;
   border-radius: 10px;
   width: 100%;
-  min-height: 150px;
+  min-height: 175px;
 `;
 
 const StyledLimitText = styled.p`

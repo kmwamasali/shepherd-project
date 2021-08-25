@@ -10,6 +10,7 @@ const StyledCard = styled.div`
   box-shadow: 0px 2px 4px #EBEBEB;
   border-radius: 10px;
   margin-right: 20px;
+  margin-bottom: 25px;
 `;
 
 const StyledCardHeader = styled.div`
