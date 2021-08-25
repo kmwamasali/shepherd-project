@@ -84,12 +84,12 @@ function AccordionCard({
         <StyledHeaderRight>
           {open ?
             <Icon
-              iconSize="16px"
+              iconSize="7px"
               source={ArrowUp}
               label="Collapse"
             /> :
             <Icon
-              iconSize="16px"
+              iconSize="7px"
               source={ArrowDown}
               label="Collapse"
             />

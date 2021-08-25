@@ -24,7 +24,7 @@ class TextArea extends React.Component<any, State> {
   render() {
     return(
       <>
-        <StyledTextArea maxLength={140} value={this.props.text} onChange={this.props.onChange} />
+        <StyledTextArea maxLength={this.props.limited} value={this.props.text} onChange={this.props.onChange} />
         {this.props.limited && <StyledLimitText>Max 500 Characters</StyledLimitText>}
       </>
     );
