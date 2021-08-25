@@ -6,7 +6,7 @@ import question from '../../images/question-mark-icon.png';
 import file from '../../images/empty-file-icon.png';
 import AccordionCard from '../UI/AccordionCard';
 import Button from '../UI/Button';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextArea from '../UI/TextArea';
 import firebase from '../../utility/firebase';
 
@@ -28,20 +28,31 @@ const StyledCheckbox = styled.input`
 
 function Dashboard(): JSX.Element {
   // text area state and functions
-  const [textArea1Value, updateTextArea1Value] = useState('Instructions');
-  const [textArea2Value, updateTextArea2Value] = useState('Instructions');
+  const [textArea1Value, updateTextArea1Value] = useState();
+
+  const getData = () => {
+    firebase.ref('/text').get().then((snapshot) => {
+      if (snapshot.exists()) {
+        return updateTextArea1Value(snapshot.val());
+      }
+    });
+  }
+
+  useEffect(() => { getData() }, [])
 
   const onTextAreaChange = (e: any): void => {
-    updateTextArea1Value(e.currentTarget.value);
+    firebase.ref('/text').set(e.currentTarget.value, (err) => {
+      if (err) {
+        console.log(err)
+        } else {
+          getData();
+        }
+    });
   };
 
   const onTextArea2Change = (e: any): void => {
-    updateTextArea2Value(e.currentTarget.value);
+    e.preventDefault();
   };
-
-  const handleTextAreaSubmit = () => {
-    firebase.database().ref('/text').set(textArea1Value);
-  }
 
   // checklist state and functions
   const [checklistItems, updateChecklistItems] = useState([
@@ -104,7 +115,6 @@ function Dashboard(): JSX.Element {
         >
           <TextArea limited={true} text={textArea1Value} onChange={onTextAreaChange} />
           <Button
-            onClick={handleTextAreaSubmit}
             label="Check Hover State" />
         </Card>
         <Card
@@ -113,7 +123,7 @@ function Dashboard(): JSX.Element {
           iconLabel="location"
           cardTitle="Your Location"
         >
-          <TextArea text={textArea2Value} onChange={onTextArea2Change} />
+          <TextArea text='' onChange={onTextArea2Change} />
         </Card>
       </ContentWrapper>
     </Layout>

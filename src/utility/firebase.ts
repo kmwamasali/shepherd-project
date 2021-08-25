@@ -1,8 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
-import 'firebase/auth';
-import config from '../config/firebase';
+
+import config from '../config/firebase.js';
 
 firebase.initializeApp(config);
 
-export default firebase;
+export default firebase.database();
