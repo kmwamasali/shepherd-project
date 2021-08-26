@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Icon from '../Icon';
 import ArrowUp from '../../../images/arrow-up-icon.png';
 import ArrowDown from '../../../images/arrow-down-icon.png';
+import Tooltip from '../Tooltip';
 
 const StyledCard = styled.div`
   background: #fff;
@@ -76,11 +77,13 @@ function AccordionCard({
             label={iconLabel}
           />
           <StyledCardHeading>{cardTitle}</StyledCardHeading>
-          <Icon
-            iconSize={iconSize2}
-            source={iconSrc2}
-            label={iconLabel2}
-          />
+          <Tooltip content="Help me understand">
+            <Icon
+              iconSize={iconSize2}
+              source={iconSrc2}
+              label={iconLabel2}
+            />
+          </Tooltip>
         </StyledHeaderLeft>
         <StyledHeaderRight>
           {open ?

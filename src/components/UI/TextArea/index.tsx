@@ -6,6 +6,9 @@ type State = {
 }
 
 const StyledTextArea = styled.textarea`
+  color: #272727;
+  padding: 16px;
+  font-size: 10px;
   background: #F9F9F9;
   border: 1px solid #E5E5E5;
   box-sizing: border-box;

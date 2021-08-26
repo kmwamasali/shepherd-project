@@ -6,6 +6,8 @@ import Button from '../UI/Button';
 import { useState } from 'react';
 
 const StyledContent = styled.div`
+  color: #272727;
+  font-size: 10px;
   min-height: 188px;
   margin-bottom: 7px;
 `;
