@@ -9,24 +9,17 @@ function PersonalNotes(): JSX.Element {
   // text area state and functions
   const [textAreaValue, updatetextAreaValue] = useState();
 
-  const getData = () => {
+  useEffect(() => {
     firebase.ref('/text').get().then((snapshot) => {
       if (snapshot.exists()) {
         return updatetextAreaValue(snapshot.val());
       }
     });
-  }
-
-  useEffect(() => getData(), [])
+  }, []);
 
   const onTextAreaChange = (e: any): void => {
-    firebase.ref('/text').set(e.currentTarget.value, (err) => {
-      if (err) {
-        console.log(err)
-        } else {
-          getData();
-        }
-    });
+    updatetextAreaValue(e.currentTarget.value);
+    firebase.ref('/text').set(e.currentTarget.value);
   };
 
   return(
